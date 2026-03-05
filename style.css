@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1, #f06292);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Floating hearts background */
+body::before,
+body::after {
+    content: '💕';
+    position: fixed;
+    font-size: 2rem;
+    opacity: 0.15;
+    animation: floatHearts 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+body::before {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+body::after {
+    content: '💖';
+    bottom: 20%;
+    right: 10%;
+    font-size: 2.5rem;
+    animation-delay: 3s;
+}
+
+@keyframes floatHearts {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+/* ── Main Card ── */
+#parent {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 48px 40px;
+    width: 440px;
+    max-width: 92vw;
+    text-align: center;
+    box-shadow:
+        0 8px 32px rgba(233, 30, 99, 0.18),
+        0 2px 8px rgba(0, 0, 0, 0.06);
+    animation: cardPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+@keyframes cardPop {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ── Heading ── */
+h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #e91e63, #c2185b, #ad1457);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+    position: relative;
+}
+
+h1::after {
+    content: '❤️';
+    display: block;
+    font-size: 1.4rem;
+    margin-top: 6px;
+    -webkit-text-fill-color: initial;
+    animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.2);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.15);
+    }
+}
+
+/* ── Form ── */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ad1457;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: left;
+    margin-bottom: -10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #f8bbd0;
+    border-radius: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #880e4f;
+    background: rgba(252, 228, 236, 0.4);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+    color: #e191b2;
+}
+
+input[type="text"]:focus {
+    border-color: #e91e63;
+    background: rgba(252, 228, 236, 0.7);
+    box-shadow: 0 0 0 4px rgba(233, 30, 99, 0.12);
+    transform: translateY(-1px);
+}
+
+/* Hide the <br> tags */
+br {
+    display: none;
+}
+
+/* ── Button ── */
+button[type="submit"] {
+    margin-top: 8px;
+    padding: 16px 32px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #ec407a, #e91e63, #c2185b);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(233, 30, 99, 0.35);
+    position: relative;
+    overflow: hidden;
+}
+
+button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transition: left 0.5s ease;
+}
+
+button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 24px rgba(233, 30, 99, 0.45);
+    background: linear-gradient(135deg, #f06292, #ec407a, #e91e63);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
+}
+
+/* ── Result ── */
+h2 {
+    margin-top: 24px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #c2185b;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, rgba(252, 228, 236, 0.6), rgba(248, 187, 208, 0.4));
+    border-radius: 14px;
+    border: 1px solid rgba(233, 30, 99, 0.12);
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    #parent {
+        padding: 32px 24px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    button[type="submit"] {
+        padding: 14px 24px;
+    }
+}
